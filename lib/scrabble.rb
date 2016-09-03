@@ -1,17 +1,13 @@
 class Scrabble
-  attr_reader :point_values
+
   def score(word)
-    if word == nil 
-      0
-    elsif word == ""
+    if word == nil || word == ""
       0
     else
       word = word_format(word)
-      word_total = 0
-      word.each do |letter|
-        word_total += point_values[letter]
-      end
-      return word_total
+      total = 0
+      word.each { |letter| total += point_values[letter] }
+      return total
     end
   end
 
