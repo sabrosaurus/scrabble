@@ -1,13 +1,17 @@
 class Scrabble
   attr_reader :point_values
   def score(word)
-    if word == nil
+    if word == nil 
       0
     elsif word == ""
       0
     else
-      word.upcase!
-      point_values[word]
+      word = word_format(word)
+      word_total = 0
+      word.each do |letter|
+        word_total += point_values[letter]
+      end
+      return word_total
     end
   end
 
@@ -21,5 +25,9 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def word_format(word)
+    word.upcase.split("")
   end
 end
