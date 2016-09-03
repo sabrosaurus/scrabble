@@ -1,8 +1,14 @@
 class Scrabble
   attr_reader :point_values
   def score(word)
-    word.upcase!
-    point_values[word]
+    if word == nil
+      0
+    elsif word == ""
+      0
+    else
+      word.upcase!
+      point_values[word]
+    end
   end
 
   def point_values
